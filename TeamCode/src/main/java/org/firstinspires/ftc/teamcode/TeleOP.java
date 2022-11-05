@@ -43,14 +43,14 @@ public class TeleOP extends LinearOpMode {
             if(gamepad1.b){
                 claw.setPosition(0.3);
             }
-            if(gamepad1.a){
+            if(gamepad1.y){
                 slide.setTargetPosition(2100-200);
 
                 slide.setPower(0.3);
                 slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             }
-            if(gamepad1.y){
+            if(gamepad1.a){
                 slide.setTargetPosition(0);
                 slide.setPower(0.3);
 
