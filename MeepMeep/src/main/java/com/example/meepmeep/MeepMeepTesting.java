@@ -17,11 +17,23 @@ public class MeepMeepTesting {
                         drive.trajectorySequenceBuilder(new Pose2d(-35,70.5-9, Math.toRadians(270)))
                                 .lineTo(new Vector2d(-35, 70.5-10))
                                 .strafeTo(new Vector2d(-13, 70.5-10))
-                                .lineTo(new Vector2d(-13, 48))
-                                .splineTo(new Vector2d(-13,34), Math.toRadians(270-45))
-
-
-
+                                .lineTo(new Vector2d(-13, 34))
+                                .turn(Math.toRadians(-45))
+                                .lineTo(new Vector2d(-21.9, 26.9))
+                                .lineTo(new Vector2d(-13, 34))
+                                .turn(Math.toRadians(45))
+                                .lineTo(new Vector2d(-13, 11.5))
+                                .turn(Math.toRadians(-90))
+                                .lineTo(new Vector2d(-61.4, 11.6))
+                                .lineTo(new Vector2d(-23.8, 11.6))
+                                .turn(Math.toRadians(-90))
+                                .lineTo(new Vector2d(-23.8, 19.4))
+                                .lineTo(new Vector2d(-23.8, 11.6))
+                                .turn(Math.toRadians(90))
+                                .lineTo(new Vector2d(-61.4, 11.6))
+                                .lineTo(new Vector2d(-23.8, 11.6))
+                                .turn(Math.toRadians(-90))
+                                .lineTo(new Vector2d(-23.8, 19.4))
                                 .build()
 
                 );
