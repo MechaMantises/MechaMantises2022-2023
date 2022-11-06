@@ -49,8 +49,9 @@ slide.setTargetPosition(500);
         while (slide.isBusy()){
 
         }
+        move(5,1,0.5);
         claw.setPosition(1);
-        sleep(2);
+        sleep(2000);
         move(5,4,0.5);
         turn(11,1);
         slide.setTargetPosition(0);
