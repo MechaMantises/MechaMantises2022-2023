@@ -38,7 +38,7 @@ public class TeleOP extends LinearOpMode {
             telemetry.addData("endcoderpos ", slide.getCurrentPosition());
             telemetry.update();
             if(gamepad1.x){
-                claw.setPosition(1);
+                claw.setPosition(0.6);
             }
             if(gamepad1.b){
                 claw.setPosition(0.3);
