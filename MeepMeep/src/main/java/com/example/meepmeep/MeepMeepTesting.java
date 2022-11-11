@@ -14,29 +14,38 @@ public class MeepMeepTesting {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(52.48, 52.48, Math.toRadians(281.5), Math.toRadians(222.7), 13.56)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-35,70.5-9, Math.toRadians(270)))
+
+
+                       drive.trajectorySequenceBuilder(new Pose2d(-35,70.5-9,Math.toRadians(270)))
                                 .lineTo(new Vector2d(-35, 70.5-10))
                                 .strafeTo(new Vector2d(-13, 70.5-10))
-                                .lineTo(new Vector2d(-13, 34))
-                                .turn(Math.toRadians(-45))
-                                .lineTo(new Vector2d(-17.8, 30.3))
-                                .lineTo(new Vector2d(-13, 34))
-                                .turn(Math.toRadians(45))
-                                .lineTo(new Vector2d(-13, 11.5))
-                                .turn(Math.toRadians(-90))
-                                .lineTo(new Vector2d(-61.4, 11.6))
-                                .lineTo(new Vector2d(-23.8, 11.6))
-                                .turn(Math.toRadians(-90))
-                                .lineTo(new Vector2d(-23.8, 19.4))
-                                .lineTo(new Vector2d(-23.8, 11.6))
-                                .turn(Math.toRadians(90))
-                                .lineTo(new Vector2d(-61.4, 11.6))
-                                .lineTo(new Vector2d(-23.8, 11.6))
-                                .turn(Math.toRadians(-90))
-                                .lineTo(new Vector2d(-23.8, 19.4))
-                                .build()
 
+                                .lineTo(new Vector2d(-13, 35))
+                                .turn(Math.toRadians(-45))
+                                .lineTo(new Vector2d(-16.2, 31.5))
+
+
+                .lineTo(new Vector2d(-13, 35))
+
+                .turn(Math.toRadians(45))
+                .lineTo(new Vector2d(-13, 13.5))
+                .turn(Math.toRadians(-90))
+                .lineTo(new Vector2d(-56.5, 13.5))
+
+
+
+                .lineTo(new Vector2d(-21, 11.6))
+
+                .turn(Math.toRadians(-90))
+//
+
+                .turn(Math.toRadians(90))
+                               .lineTo(new Vector2d(-55, 11.5))
+
+                .build()
                 );
+
+
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_POWERPLAY_OFFICIAL)
                 .setDarkMode(true)
