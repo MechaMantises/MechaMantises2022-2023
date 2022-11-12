@@ -91,7 +91,8 @@ public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
          * The INIT-loop:
          * This REPLACES waitForStart!
          */
-        
+        MantisClass mantis = new MantisClass(this);
+
         while (!isStarted() && !isStopRequested())
         {
             ArrayList<AprilTagDetection> currentDetections = aprilTagDetectionPipeline.getLatestDetections();
@@ -171,6 +172,9 @@ public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
 
         /* Actually do something useful */
         if(tagOfInterest ==null||tagOfInterest.id==left){
+            mantis.AutoBlue("left");
+
+
 
         }
         else if(tagOfInterest.id==middle){
