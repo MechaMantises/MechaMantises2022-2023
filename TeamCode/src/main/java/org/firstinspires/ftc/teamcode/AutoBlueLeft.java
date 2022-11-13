@@ -21,21 +21,21 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.acmerobotics.dashboard.FtcDashboard;
+import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.openftc.easyopencv.OpenCvInternalCamera;
 
 import java.util.ArrayList;
 
 @Autonomous
-public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
+public class AutoBlueLeft extends LinearOpMode
 {
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -92,6 +92,9 @@ public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
          * This REPLACES waitForStart!
          */
         MantisClass mantis = new MantisClass(this);
+        FtcDashboard dashboard = FtcDashboard.getInstance();
+        telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
+        FtcDashboard.getInstance().startCameraStream(camera, 10);
 
         while (!isStarted() && !isStopRequested())
         {
@@ -172,21 +175,26 @@ public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
 
         /* Actually do something useful */
         if(tagOfInterest ==null||tagOfInterest.id==left){
-            mantis.AutoBlue("left");
+            mantis.AutoBlueLeft("left");
+            stop();
 
 
 
         }
         else if(tagOfInterest.id==middle){
+            mantis.AutoBlueLeft("middle");
+            stop();
 
         }
         else{
+            mantis.AutoBlueLeft("right");
+            stop();
 
         }
 
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
-        while (opModeIsActive()) {sleep(20);}
+
     }
 
     void tagToTelemetry(AprilTagDetection detection)

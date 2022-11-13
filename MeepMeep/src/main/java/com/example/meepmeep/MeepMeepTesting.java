@@ -16,36 +16,42 @@ public class MeepMeepTesting {
                 .followTrajectorySequence(drive ->
 
 
-                       drive.trajectorySequenceBuilder(new Pose2d(-32.5,70.5-9,Math.toRadians(270)))
-                                .lineTo(new Vector2d(-32.5, 70.5-10))
-                                .strafeTo(new Vector2d(-13, 70.5-10))
+                       drive.trajectorySequenceBuilder(new Pose2d(30,70.5-9,Math.toRadians(270)))
+                        .lineTo(new Vector2d(30, 70.5-10))
+                        .strafeTo(new Vector2d(12, 70.5-10))
 
-                                .lineTo(new Vector2d(-13, 35))
-                                .turn(Math.toRadians(-45))
-                                .lineTo(new Vector2d(-16.2, 31.5))
-
-
-                .lineTo(new Vector2d(-13, 35))
-
-                .turn(Math.toRadians(45))
-                .lineTo(new Vector2d(-13, 13.5))
-                .turn(Math.toRadians(-90))
-                .lineTo(new Vector2d(-57, 13.5))
+                        .lineTo(new Vector2d(12, 35))
+                        .turn(Math.toRadians(45))
+                        .lineTo(new Vector2d(16-1, 31.3+1))
 
 
+                .lineTo(new Vector2d(12, 35))
 
-                .lineTo(new Vector2d(-22.5, 13.5))
+                .turn(Math.toRadians(-45))
+                .lineTo(new Vector2d(12, 12))
+                .turn(Math.toRadians(90))
+                .lineTo(new Vector2d(56.5, 13))
 
-                .turn(Math.toRadians(-90))
-//
+                                .turn(Math.toRadians(-90))
+
+                                //  .strafeTo(new Vector2d(-19.8,13.5))
+                                .lineTo(new Vector2d(56.25, 13))
+
+
+
+
+                .lineTo(new Vector2d(21, 12))
 
                 .turn(Math.toRadians(90))
-                               .lineTo(new Vector2d(-57, 13.5))
-                               .lineTo(new Vector2d(-22.5, 13.5))
-                               .turn(Math.toRadians(-90))
-
-
+//                .lineTo(new Vector2d(-23.8, 19.4))
+//                .lineTo(new Vector2d(-23.8, 11.6))
+//                .turn(Math.toRadians(90))
+//                .lineTo(new Vector2d(-61.4, 11.6))
+//                .lineTo(new Vector2d(-23.8, 11.6))
+//                .turn(Math.toRadians(-90))
+//                .lineTo(new Vector2d(-23.8, 19.4))
                 .build()
+
                 );
 
 
