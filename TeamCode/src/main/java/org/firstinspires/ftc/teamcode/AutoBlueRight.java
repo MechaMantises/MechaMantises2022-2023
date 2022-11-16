@@ -62,6 +62,8 @@ public class AutoBlueRight extends LinearOpMode
     int middle = 2;
     int right = 3;
 
+    
+
     @Override
     public void runOpMode()
     {

@@ -20,7 +20,7 @@ public class MantisClass {
         drive = new SampleMecanumDrive(op.hardwareMap);
         slides = op.hardwareMap.dcMotor.get("slide");
         claw = op.hardwareMap.servo.get("claw");
-        claw.setPosition(0.3);
+        claw.setPosition(0.25);
         slides.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         slides.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -38,25 +38,25 @@ public class MantisClass {
                     slides.setPower(0.5);
                     slides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 })
-                .lineTo(new Vector2d(-12, 35))
+                .lineTo(new Vector2d(-12, 35.5))
                 .turn(Math.toRadians(-45))
-                .lineTo(new Vector2d(-16+1, 31.3+1))
+                .lineTo(new Vector2d(-12-2.5, 35.5-2.5))
                 .build();
-        TrajectorySequence traj2 = drive.trajectorySequenceBuilder(new Pose2d(-16.2,31.5,Math.toRadians(225)))
-                .lineTo(new Vector2d(-12, 35))
+        TrajectorySequence traj2 = drive.trajectorySequenceBuilder(new Pose2d(-14.5,33,Math.toRadians(225)))
+                .lineTo(new Vector2d(-12, 35.5))
                 .addDisplacementMarker(()->{
                     slides.setTargetPosition(425);
                     slides.setPower(0.5);
                     slides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 })
                 .turn(Math.toRadians(45))
-                .lineTo(new Vector2d(-12, 12))
-                .turn(Math.toRadians(-90))
-                .lineTo(new Vector2d(-56.5, 13))
+                .lineTo(new Vector2d(-12, 13))
+                .turn(Math.toRadians(-90)) //0
+                .lineTo(new Vector2d(-55.5, 13))
                 .build();
 
-        TrajectorySequence traj4 = drive.trajectorySequenceBuilder(new Pose2d(-56.7,13, Math.toRadians(180)))
-                .lineTo(new Vector2d(-21, 12))
+        TrajectorySequence traj4 = drive.trajectorySequenceBuilder(new Pose2d(-55.5,13, Math.toRadians(180)))
+                .lineTo(new Vector2d(-21, 13))
                 .addDisplacementMarker( ()-> {
                             slides.setTargetPosition(2100 - 150);
 
@@ -73,31 +73,30 @@ public class MantisClass {
 //                .turn(Math.toRadians(-90))
 //                .lineTo(new Vector2d(-23.8, 19.4))
                 .build();
-        TrajectorySequence traj5 = drive.trajectorySequenceBuilder(new Pose2d(-21, 12, Math.toRadians(90)))
-                //.back(2)
+        TrajectorySequence traj5 = drive.trajectorySequenceBuilder(new Pose2d(-21, 13, Math.toRadians(90)))
                 .turn(Math.toRadians(90))
                 .addDisplacementMarker(()->{
-                    slides.setTargetPosition(350);
+                    slides.setTargetPosition(300);
 
                     slides.setPower(0.6);
                     slides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 })
                 //  .strafeTo(new Vector2d(-19.8,13.5))
-                .lineTo(new Vector2d(-56.7, 13))
+                .lineTo(new Vector2d(-55.5, 13))
 
                 .build();
         TrajectorySequence traj6 = drive.trajectorySequenceBuilder(new Pose2d(-56.35,13, Math.toRadians(90)))
-                        .back(2)
-                                .strafeRight(10)
-                                        .build();
+                .back(2)
+                .strafeRight(11)
+                .build();
         TrajectorySequence traj7 = drive.trajectorySequenceBuilder(new Pose2d  (-56.35,13, Math.toRadians(90)))
-                        .back(2)
-                                .strafeLeft(10)
-                                        .build();
+                .back(2)
+                .strafeLeft(10)
+                .build();
 
         TrajectorySequence traj8 = drive.trajectorySequenceBuilder(new Pose2d  (-56.35,13, Math.toRadians(90)))
                 .back(2)
-                .strafeLeft(20)
+                .strafeLeft(35)
                 .build();
 
 
@@ -110,10 +109,10 @@ public class MantisClass {
         op.sleep(500);
         claw.setPosition(0.6);
         op.sleep(500);
-        drive.setPoseEstimate(new Pose2d(-16.2,31.5,Math.toRadians(225)));
+        drive.setPoseEstimate(new Pose2d(-14.5,33,Math.toRadians(225)));
         drive.followTrajectorySequence(traj2);
         op.sleep(500);
-        claw.setPosition(0.3);
+        claw.setPosition(0.25);
         op.sleep(500);
         slides.setTargetPosition(900);
         slides.setPower(0.5);
@@ -121,7 +120,7 @@ public class MantisClass {
         while (slides.getCurrentPosition()<900){
 
         }
-        drive.setPoseEstimate(new Pose2d(-56.7,13, Math.toRadians(180)));
+        drive.setPoseEstimate(new Pose2d(-55.5,13, Math.toRadians(180)));
         drive.followTrajectorySequence(traj4);
         op.sleep(500);
         claw.setPosition(0.6);
@@ -129,7 +128,7 @@ public class MantisClass {
         drive.setPoseEstimate(new Pose2d(-21, 13, Math.toRadians(90)));
         drive.followTrajectorySequence(traj5);
         op.sleep(500);
-        claw.setPosition(0.3);
+        claw.setPosition(0.25);
         op.sleep(500);
         slides.setTargetPosition(825);
         slides.setPower(0.5);
@@ -137,7 +136,7 @@ public class MantisClass {
         while (slides.getCurrentPosition()<825){
 
         }
-        drive.setPoseEstimate(new Pose2d(-56.7,13, Math.toRadians(180)));
+        drive.setPoseEstimate(new Pose2d(-55.5,13, Math.toRadians(180)));
         drive.followTrajectorySequence(traj4);
         op.sleep(500);
         claw.setPosition(0.6);
@@ -154,7 +153,6 @@ public class MantisClass {
         }
         else if (pos == "middle"){
             drive.setPoseEstimate(new Pose2d(-56.35,13, Math.toRadians(90)));
-
             drive.followTrajectorySequence(traj7);
 
         }
