@@ -65,6 +65,7 @@ public class MantisClass {
                         }
                 )
                 .turn(Math.toRadians(-90))
+                .lineTo(new Vector2d(-21, 15))
 //                .lineTo(new Vector2d(-23.8, 19.4))
 //                .lineTo(new Vector2d(-23.8, 11.6))
 //                .turn(Math.toRadians(90))
@@ -73,7 +74,8 @@ public class MantisClass {
 //                .turn(Math.toRadians(-90))
 //                .lineTo(new Vector2d(-23.8, 19.4))
                 .build();
-        TrajectorySequence traj5 = drive.trajectorySequenceBuilder(new Pose2d(-21, 13, Math.toRadians(90)))
+        TrajectorySequence traj5 = drive.trajectorySequenceBuilder(new Pose2d(-21, 15, Math.toRadians(90)))
+                .lineTo(new Vector2d(-21,13))
                 .turn(Math.toRadians(90))
                 .addDisplacementMarker(()->{
                     slides.setTargetPosition(300);
