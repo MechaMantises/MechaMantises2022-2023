@@ -19,7 +19,7 @@
  * SOFTWARE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.auton;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
@@ -35,7 +35,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.ArrayList;
 
 @Autonomous
-public class AutoBlueLeft extends LinearOpMode
+public class AutoBlueRightV2 extends LinearOpMode
 {
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -55,12 +55,14 @@ public class AutoBlueLeft extends LinearOpMode
     // UNITS ARE METERS
     double tagsize = 0.03175;
 
-   // int ID_TAG_OF_INTEREST = 18; // Tag ID 18 from the 36h11 family
+    // int ID_TAG_OF_INTEREST = 18; // Tag ID 18 from the 36h11 family
 
     AprilTagDetection tagOfInterest = null;
     int left = 1;
     int middle = 2;
     int right = 3;
+
+
 
     @Override
     public void runOpMode()
@@ -175,19 +177,19 @@ public class AutoBlueLeft extends LinearOpMode
 
         /* Actually do something useful */
         if(tagOfInterest ==null||tagOfInterest.id==left){
-            mantis.AutoBlueLeft("left");
+            mantis.AutoPark("left");
             stop();
 
 
 
         }
         else if(tagOfInterest.id==middle){
-            mantis.AutoBlueLeft("middle");
+            mantis.AutoPark("middle");
             stop();
 
         }
         else{
-            mantis.AutoBlueLeft("right");
+            mantis.AutoPark("right");
             stop();
 
         }
@@ -207,4 +209,6 @@ public class AutoBlueLeft extends LinearOpMode
         telemetry.addLine(String.format("Rotation Pitch: %.2f degrees", Math.toDegrees(detection.pose.pitch)));
         telemetry.addLine(String.format("Rotation Roll: %.2f degrees", Math.toDegrees(detection.pose.roll)));
     }
+
+
 }

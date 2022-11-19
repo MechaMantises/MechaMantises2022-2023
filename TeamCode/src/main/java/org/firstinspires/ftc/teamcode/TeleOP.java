@@ -13,6 +13,7 @@ public class TeleOP extends LinearOpMode {
     DcMotor rightRear;
     Servo claw;
     DcMotor slide;
+    public static int position;
     public void runOpMode(){
         leftFront = hardwareMap.dcMotor.get("leftFront");
         leftRear = hardwareMap.dcMotor.get("leftRear");
@@ -20,6 +21,7 @@ public class TeleOP extends LinearOpMode {
         rightRear = hardwareMap.dcMotor.get("rightRear");
         claw = hardwareMap.servo.get("claw");
         slide = hardwareMap.dcMotor.get("slide");
+
 
 
 
@@ -35,6 +37,7 @@ public class TeleOP extends LinearOpMode {
 
         waitForStart();
         while(opModeIsActive()) {
+
             telemetry.addData("endcoderpos ", slide.getCurrentPosition());
             telemetry.update();
             if(gamepad1.x){
@@ -66,6 +69,44 @@ public class TeleOP extends LinearOpMode {
                 slide.setPower(0.3);
                 slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
+
+            if(gamepad1.dpad_left){
+                leftFront.setPower(-0.5);
+                leftRear.setPower(0.5);
+                rightFront.setPower(0.5);
+                rightRear.setPower(-0.5);
+            }else if(gamepad1.dpad_right){
+                leftFront.setPower(0.5);
+                leftRear.setPower(-0.5);
+                rightFront.setPower(-0.5);
+                rightRear.setPower(0.5);
+            }else if(gamepad1.dpad_up){
+                leftFront.setPower(0.5);
+                leftRear.setPower(0.5);
+                rightFront.setPower(0.5);
+                rightRear.setPower(0.5);
+            } else if(gamepad1.dpad_down){
+                leftFront.setPower(-0.5);
+                leftRear.setPower(-0.5);
+                rightFront.setPower(-0.5);
+                rightRear.setPower(-0.5);
+            }
+            if(gamepad2.start){
+                slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            }
+            if(gamepad2.dpad_down){
+                position = slide.getCurrentPosition();
+                slide.setTargetPosition(position-1);
+                slide.setPower(0.3);
+                slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
+            else if(gamepad2.dpad_up){
+                position = slide.getCurrentPosition();
+                slide.setTargetPosition(position+1);
+                slide.setPower(0.3);
+                slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
+
 
 
 
